@@ -28,7 +28,28 @@ export default function LoginPage() {
             }}
             className="w-full"
           >
-            <Button className="w-full">Sign in with GitHub</Button>
+            <Button className="w-full">Sign in with GothHub</Button>
+          </form>
+        </CardFooter>
+      </Card>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardDescription>
+            This demo uses GitHub for authentication.
+          </CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <form
+            action={async () => {
+              'use server';
+              await signIn('google', {
+                redirectTo: '/'
+              });
+            }}
+            className="w-full"
+          >
+            <Button className="w-full">Sign in with Google</Button>
           </form>
         </CardFooter>
       </Card>
