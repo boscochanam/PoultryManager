@@ -12,13 +12,14 @@ import {
 import { count, eq, ilike } from 'drizzle-orm';
 import { createInsertSchema } from 'drizzle-zod';
 
+import postgres from 'postgres';
+import { config } from 'dotenv';
+
 // Ensure the DATABASE_URL is logged for debugging
 console.log('DATABASE_URL:', process.env.DATABASE_URL);
-
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-
 export const db = drizzle(pool);
 
 export const statusEnum = pgEnum('status', ['active', 'inactive', 'archived']);
