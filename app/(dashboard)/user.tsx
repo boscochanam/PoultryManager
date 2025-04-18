@@ -14,6 +14,7 @@ import Link from 'next/link';
 export async function User() {
   let session = await auth();
   let user = session?.user;
+  console.log("user: ", user);
 
   return (
     <DropdownMenu>
@@ -33,7 +34,7 @@ export async function User() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Signed in as {user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
@@ -43,6 +44,7 @@ export async function User() {
             <form
               action={async () => {
                 'use server';
+                console.log('signing out');
                 await signOut();
               }}
             >
