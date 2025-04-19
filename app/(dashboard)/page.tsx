@@ -5,6 +5,6 @@ export default async function ProductsPage() {
   const financeData = await response.json();
   
   return (
-    <FinanceDashboard graphData={financeData}/>
+      <FinanceDashboard graphData={financeData}/>
   );
 }
