@@ -6,8 +6,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [GitHub, Google],
   callbacks: {
     authorized: async ({ auth }) => {
+      console.log("auth: ", auth);
+      console.log("Your name: ", auth?.user?.name);
       return !!auth;
-    }
+    },
+    
   }
 }
 );

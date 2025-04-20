@@ -30,6 +30,7 @@ export async function User() {
             height={36}
             alt="Avatar"
             className="overflow-hidden rounded-full"
+            loading="lazy"
           />
         </Button>
       </DropdownMenuTrigger>
