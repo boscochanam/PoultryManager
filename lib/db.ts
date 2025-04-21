@@ -67,6 +67,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   expenses: many(expenses),
   chickenHealthRecords: many(chickenHealthRecords),
   reports: many(reports),
+  sales: many(sales),
 }));
 
 export const farms = pgTable("farms", {
@@ -83,15 +84,12 @@ export const farms = pgTable("farms", {
 });
 
 export const farmsRelations = relations(farms, ({ one, many }) => ({
-  // farmManager: one(users, {
-  //   fields: [farms.farmManagerId],
-  //   references: [users.userId],
-  // }),
   supplies: many(supplies),
   orders: many(orders),
   reports: many(reports),
   chickenHealthRecords: many(chickenHealthRecords),
   payrolls: many(payroll),
+  sales: many(sales),
 }));
 
 // Suppliers Table
@@ -208,6 +206,31 @@ export const expensesRelations = relations(expenses, ({ one }) => ({
   recordedBy: one(users, {
     fields: [expenses.recordedBy],
     references: [users.userId],
+  }),
+}));
+
+//Sales Table
+export const sales = pgTable("sales", {
+  salesId: text("sales_id").primaryKey(),
+  farmId: text("farm_id")
+    .notNull()
+    .references(() => farms.farmId), // Foreign key to farms table
+  salesType: text("sales_type"),
+  amount: integer("amount"),
+  description: text("description"),
+  salesDate: date("sales_date"),
+  recordedBy: text("recorded_by").references(() => users.userId), // Foreign key to users table
+  createdAt: timestamp("created_at"),
+});
+
+export const salesRelations = relations(sales, ({ one }) => ({
+  recordedBy: one(users, {
+    fields: [sales.recordedBy],
+    references: [users.userId],
+  }),
+  farm: one(farms, {
+    fields: [sales.farmId],
+    references: [farms.farmId],
   }),
 }));
 
