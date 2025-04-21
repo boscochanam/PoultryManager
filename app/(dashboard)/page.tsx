@@ -21,10 +21,10 @@ export default async function ProductsPage() {
           Sales
         </TabsTrigger>
         <TabsTrigger 
-          value="inventory" 
+          value="operations" 
           className="w-[100px] data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
         >
-          Inventory
+          Operations
         </TabsTrigger>
       </TabsList>
       <TabsContent value="finance">
