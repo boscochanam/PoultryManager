@@ -9,7 +9,7 @@ export function SignOutButton() {
         await signOut();
       }}
     >
-      <Button variant="outline">Sign Out</Button>
+      <button className="outline">Sign Out</button>
     </form>
   );
 }

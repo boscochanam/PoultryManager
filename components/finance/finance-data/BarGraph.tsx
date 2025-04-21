@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {
   Card,
@@ -22,6 +22,7 @@ interface BarGraphProps {
     date: string
     [key: string]: string | number
   }>
+  
   xKey: string
   yKeys: string[]
   labels?: { [key: string]: string }
@@ -108,11 +109,18 @@ export function BarGraph({
             accessibilityLayer
             data={graphData}
             margin={{
-              left: 12,
-              right: 12,
+              left: 0, 
+              right: 0,
+              top: 10
             }}
           >
             <CartesianGrid vertical={false} />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={(value) => `₹${value}`}
+              width={40}
+            />
             <XAxis
               dataKey={xKey}
               tickLine={false}

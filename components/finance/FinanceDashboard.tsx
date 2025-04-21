@@ -9,7 +9,7 @@ export default function FinanceDashboard({graphData}: FinanceDashboardProps) {
     
 
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 relative z-0'>
             <BarGraph 
                 graphData={graphData}
                 xKey="date"
