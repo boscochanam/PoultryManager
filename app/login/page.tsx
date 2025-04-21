@@ -9,6 +9,20 @@ import {
 import { signIn } from '@/lib/auth';
 
 export default function LoginPage() {
+  const signInWithGithub = async () => {
+    'use server';
+    await signIn('github', {
+      redirectTo: '/'
+    });
+  };
+
+  const signInWithGoogle = async () => {
+    'use server';
+    await signIn('google', {
+      redirectTo: '/'
+    });
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-start md:items-center p-8">
       <Card className="w-full max-w-sm">
@@ -19,16 +33,10 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <form
-            action={async () => {
-              'use server';
-              await signIn('github', {
-                redirectTo: '/'
-              });
-            }}
-            className="w-full"
-          >
-            <Button className="w-full">Sign in with GothHub</Button>
+          <form className="w-full" action={signInWithGithub}>
+            <Button type="submit" className="w-full">
+              Sign in with GitHub
+            </Button>
           </form>
         </CardFooter>
       </Card>
@@ -40,16 +48,10 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <form
-            action={async () => {
-              'use server';
-              await signIn('google', {
-                redirectTo: '/'
-              });
-            }}
-            className="w-full"
-          >
-            <Button className="w-full">Sign in with Google</Button>
+          <form className="w-full" action={signInWithGoogle}>
+            <Button type="submit" className="w-full">
+              Sign in with Google
+            </Button>
           </form>
         </CardFooter>
       </Card>

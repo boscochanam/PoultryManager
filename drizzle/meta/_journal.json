@@ -15,6 +15,13 @@
       "when": 1744643635382,
       "tag": "0001_past_paladin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1745255509851,
+      "tag": "0002_open_devos",
+      "breakpoints": true
     }
   ]
 }
